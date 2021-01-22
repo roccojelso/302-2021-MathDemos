@@ -10,10 +10,9 @@ public static class AnimMath
 
         if (!allowExtrapolation)
         {
-            if (p < 0) p = 0;
-            if (p > 1) p = 1;
+            if (p < 0) return min;
+            if (p > 1) return max;
         }
-
         return (max - min) * p + min;
     }
 
@@ -22,12 +21,27 @@ public static class AnimMath
 
         if (!allowExtrapolation)
         {
-            if (p < 0) p = 0;
-            if (p > 1) p = 1;
+            if (p < 0) return min;
+            if (p > 1) return max;
         }
 
 
         return (max - min) * p + min;
+    }
+
+    public static float Slide(float current, float target, float percentLeftAfter1Second)
+    {
+        
+        float p = 1 - Mathf.Pow(percentLeftAfter1Second, Time.deltaTime);
+        return AnimMath.Lerp(current, target, p);
+
+    }
+
+    public static Vector3 Slide(Vector3 current, Vector3 target, float percentLeftAfter1Second)
+    {
+        float p = 1 - Mathf.Pow(percentLeftAfter1Second, Time.deltaTime);
+        return AnimMath.Lerp(current, target, p);
+
     }
 
 }
