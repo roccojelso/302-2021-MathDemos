@@ -15,6 +15,14 @@ public class LerpDemo : MonoBehaviour {
 
     public AnimationCurve animationCurve;
 
+    public float getCurrentPercent
+    {
+        get {
+            return animationPlayheadTime / animationLength;
+        }
+
+    }
+
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +37,7 @@ public class LerpDemo : MonoBehaviour {
         {
             animationPlayheadTime += Time.deltaTime;
 
-            percent = animationPlayheadTime / animationLength;
+            percent = getCurrentPercent;
 
             // clamp in 0 to 1 range;
             percent = Mathf.Clamp(percent, 0, 1);
@@ -47,7 +55,7 @@ public class LerpDemo : MonoBehaviour {
 
 	}
 
-    private void DoTheLerp(float p)
+    public void DoTheLerp(float p)
     {
 
         transform.position = AnimMath.Lerp(objectStart.transform.position, objectEnd.transform.position, p);
