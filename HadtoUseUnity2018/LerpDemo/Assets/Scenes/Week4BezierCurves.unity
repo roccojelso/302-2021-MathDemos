@@ -457,7 +457,7 @@ MonoBehaviour:
   handleB: {fileID: 32571328}
   percent: 0
   curveResolution: 2
-  tweenLength: 5.25
+  tweenLength: 3
   tweenSpeed:
     serializedVersion: 2
     m_Curve:
